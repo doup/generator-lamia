@@ -1,40 +1,57 @@
 'use strict';
+
 var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
+var chalk  = require('chalk');
+var yosay  = require('yosay');
 
 module.exports = yeoman.generators.Base.extend({
-  prompting: function () {
-    var done = this.async();
+    prompting: function () {
+        console.log(this.sourceRoot());
 
-    // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the amazing ' + chalk.red('generator-lamia') + ' generator!'
-    ));
+        // Have Yeoman greet the user.
+        this.log(yosay(
+            'Welcome to the amazing ' + chalk.cyan('Lamia') + ' generator!'
+        ));
 
-    var prompts = [{
-      type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
-    }];
+        /*
+        var done = this.async();
 
-    this.prompt(prompts, function (props) {
-      this.props = props;
-      // To access props later use this.props.someOption;
+        // Have Yeoman greet the user.
+        this.log(yosay(
+            'Welcome to the amazing ' + chalk.red('generator-lamia') + ' generator!'
+        ));
 
-      done();
-    }.bind(this));
-  },
+        var prompts = [{
+            type: 'confirm',
+            name: 'someOption',
+            message: 'Would you like to enable this option?',
+            default: true
+        }];
 
-  writing: function () {
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
-    );
-  },
+        this.prompt(prompts, function (props) {
+            this.props = props;
+            // To access props later use this.props.someOption;
 
-  install: function () {
-    this.installDependencies();
-  }
+            done();
+        }.bind(this));
+        */
+    },
+
+    writing: function () {
+        this.directory('base', '');
+        /*
+        this.fs.copy(
+            this.templatePath('base/**'),
+            this.destinationPath('')
+        );
+
+        this.fs.copy(
+            this.templatePath('dummyfile.txt'),
+            this.destinationPath('dummyfile.txt')
+        );*/
+    },
+
+    install: function () {
+        this.installDependencies();
+    }
 });
